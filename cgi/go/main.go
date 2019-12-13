@@ -1,28 +1,78 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
+	"strings"
+
+	"text/template"
 )
 
-func receiver(w http.ResponseWriter, r *http.Request){
-	// クエリパラメータ取得してみる
-	fmt.Fprintf(w, "クエリ：%s\n", r.URL.RawQuery)
-
-	// Bodyデータを扱う場合には、事前にパースを行う
-	r.ParseForm()
-
-	// Formデータを取得.
-	form := r.PostForm
-	fmt.Fprintf(w, "フォーム：\n%v\n", form)
-	fmt.Fprintf(w, "フォーム：\n%v\n", form["password"])
-
-
-
-	// または、クエリパラメータも含めて全部.
-	params := r.Form
-	fmt.Fprintf(w, "フォーム2：\n%v\n", params)
+type Query struct {
+	Method string
+	Id string
+	Password string
+	Anonymous string
+	Kikazaru string
+	Mizaru string
+	Syaberazaru string
 }
+
+func receiver(w http.ResponseWriter, r *http.Request){
+	//構造体の宣言
+	query := new(Query)
+
+	//メソッドチェック
+	if r.Method == http.MethodPost {
+		query.Method = "POST"
+	}else{
+		query.Method = "GET"
+	}
+
+	// Formデータを取得。mapに変換してから使用している。
+	//map[anonymous:[on] id:[root] kikazaru:[1] mizaru:[1] password:[root] syaberazaru:[1]]
+	r.ParseForm()
+	parameter := r.Form
+
+
+	//[]string型だったのでstringにキャストしてる
+	query.Id = strings.Join(parameter["id"],"")
+	query.Password = strings.Join(parameter["password"],"")
+	query.Anonymous = strings.Join(parameter["anonymous"],"")
+
+	if strings.Join(parameter["kikazaru"],"") == "1" {
+		query.Kikazaru = "checked='checked'"
+	}else{
+		query.Kikazaru = ""
+	}
+
+	if strings.Join(parameter["mizaru"],"") == "1" {
+		query.Mizaru = "checked='checked'"
+	}else{
+		query.Mizaru = ""
+	}
+
+	if strings.Join(parameter["syaberazaru"],"") == "1" {
+		query.Syaberazaru = "checked='checked'"
+	}else{
+		query.Syaberazaru = ""
+	}
+
+
+	tmpl, err := template.ParseFiles("html/receive/index.html")
+	if err != nil {
+		panic(err)
+	}
+
+	err = tmpl.Execute(w, query)
+	if err != nil {
+		panic(err)
+	}
+
+
+
+}
+
+
 
 
 
