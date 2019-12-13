@@ -33,7 +33,6 @@ func receiver(w http.ResponseWriter, r *http.Request){
 	r.ParseForm()
 	parameter := r.Form
 
-
 	//[]string型だったのでstringにキャストしてる
 	query.Id = strings.Join(parameter["id"],"")
 	query.Password = strings.Join(parameter["password"],"")
@@ -58,6 +57,7 @@ func receiver(w http.ResponseWriter, r *http.Request){
 	}
 
 
+	//htmlに埋め込んで返す
 	tmpl, err := template.ParseFiles("html/receive/index.html")
 	if err != nil {
 		panic(err)
@@ -67,18 +67,16 @@ func receiver(w http.ResponseWriter, r *http.Request){
 	if err != nil {
 		panic(err)
 	}
-
-
-
 }
 
-
-
-
-
 func main() {
+	//ハンドラー
+	//静的ファイル返す
 	http.Handle("/get/", http.StripPrefix("/get/", http.FileServer(http.Dir("./html/get/"))))
 	http.Handle("/post/", http.StripPrefix("/post/", http.FileServer(http.Dir("./html/post/"))))
+	//func receiverの処理させる
 	http.HandleFunc("/receive", receiver)
+
+	//8080でリスニング
 	http.ListenAndServe(":8080", nil)
 }
