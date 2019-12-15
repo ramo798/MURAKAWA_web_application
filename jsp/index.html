@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700&display=swap&subset=japanese" rel="stylesheet">
+</head>
+<body>
+<div class="center">
+    <div class="main-wrapper">
+        <div class="form-wrapper">
+            <form action="./receive.jsp" method="get">
+                <div class="flex form-box">
+                    <div class="flex-left nb">
+                        ID
+                    </div>
+                    <div class="flex-right nr">
+                        <input type="text" name="id" value="">
+                    </div>
+                </div>
+                <div class="flex form-box">
+                    <div class="flex-left nb">
+                        PASSWORD
+                    </div>
+                    <div class="flex-right nr">
+                        <input type="password" name="password" value="">
+                    </div>
+                </div>
+                <div class="flex form-box">
+                    <div class="flex-left nb">
+                        匿名ログイン
+                    </div>
+                    <div class="flex-right nr">
+                        <div class="radio flex">
+                            <input type="radio" name="anonymous" class="radio-input" id="radio-01" value="on">
+                            <label for="radio-01">使用</label><br>
+                            <input type="radio" name="anonymous" class="radio-input" id="radio-02" value="off">
+                            <label for="radio-02">不使用</label><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="check-box">
+                    <div class="flex jc form-box">
+                        <input type="checkbox" id="a_ch1" name="mizaru" value="1" />
+                        <label for="a_ch1">&#x1f648;</label>
+                        <input type="checkbox" id="a_ch2" name="kikazaru" value="1" />
+                        <label for="a_ch2">&#x1f649;</label>
+                        <input type="checkbox" id="a_ch3" name="syaberazaru" value="1" />
+                        <label for="a_ch3">&#x1f64a;</label>
+                    </div>
+                </div>
+                <div class="submit-box">
+                    <input class="submit-bottom" type="submit" value="送信する">
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+<style>
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
+    body{
+        font-size: 16px;
+    }
+    .nb{
+        font-family: "Noto Sans CJK JP";
+        font-weight: 700;
+    }
+    .nr{
+        font-family: "Noto Sans CJK JP";
+        font-weight: 400;
+    }
+    .flex{
+        display: flex;
+    }
+    .jc{
+        justify-content: center;
+    }
+    .center{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .main-wrapper{
+        width: 40%;
+
+    }
+    .form-wrapper{
+        border: solid 3px #aaaaaa;
+        border-radius: 15px;
+        padding: 5%;
+    }
+    input[type='text'] {
+        box-sizing: border-box;
+        width: 70%;
+        padding: 0.3em;
+        transition: 0.3s;
+        letter-spacing: 1px;
+        color: #aaaaaa;
+        border: 5px solid #1b2538;
+        border-radius: 4px;
+    }
+    input[type='text']:focus {
+        border: 5px solid #da3c41;
+        outline: none;
+    }
+    input[type='password'] {
+        box-sizing: border-box;
+        width: 70%;
+        padding: 0.3em;
+        transition: 0.3s;
+        letter-spacing: 1px;
+        color: #aaaaaa;
+        border: 5px solid #1b2538;
+        border-radius: 4px;
+    }
+    input[type='password']:focus {
+        border: 5px solid #da3c41;
+        outline: none;
+    }
+    .form-box{
+        padding: 2% 0;
+    }
+    .flex-left{
+        font-size: 20px;
+        width: 30%;
+        display: flex;
+        align-items: center;
+        padding: 0 6%;
+    }
+    .flex-right{
+        width: 70%;
+        display: flex;
+        justify-content: center;
+    }
+    .check-box input[type=checkbox] {
+        display: none;
+    }
+    .check-box label:focus,label:hover,label:active,input:checked + label {
+        color: #da3c41;
+    }
+    .check-box label:focus:before,.check-box label:hover:before,.check-box label:active:before,.check-box input:checked + .check-box label:before {
+        border-color: #da3c41;
+        background: #ffffff;
+    }
+    .check-box label {
+        font-size: 1.7em;
+        font-weight: bold;
+        line-height: 1;
+        position: relative;
+        display: block;
+        overflow: hidden;
+        padding: 1em 1em 1em 3em;
+        cursor: pointer;
+        -webkit-transition: all 0.15s ease;
+        transition: all 0.15s ease;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        background: #ffffff;
+    }
+    .check-box label:before {
+        position: absolute;
+        bottom: 1em;
+        left: 1em;
+        width: 10px;
+        height: 10px;
+        content: '';
+        border: 0.2em solid #cccccc;
+        border-radius: 4px;
+    }
+    .check-box input:checked + label:before {
+        border-color: #da3c41;
+        background: #da3c41;
+    }
+    .radio-input{
+        display: none;
+    }
+    .radio-input + label{
+        padding: 0 20px;
+        position:relative;
+    }
+    .radio-input + label::before{
+        content: "";
+        display: block;
+        position: absolute;
+        top: 20%;
+        left: -10%;
+        width: 15px;
+        height: 15px;
+        border: 1px solid #999;
+        border-radius: 50%;
+    }
+    .radio-input:checked + label{
+        color: #d01137;
+    }
+    .radio-input:checked + label::after{
+        content: "";
+        display: block;
+        position: absolute;
+        top: 30%;
+        left: -6%;
+        width: 11px;
+        height: 11px;
+        background: #d01137;
+        border-radius: 50%;
+    }
+    .submit-box{
+        text-align: center;
+    }
+    .submit-bottom{
+        padding: 15px 40px;
+        font-size: 1.2em;
+        background-color: #000;
+        color: #fff;
+        border-style: none;
+        border-radius: 4px;
+    }
+
+</style>
+</html>
