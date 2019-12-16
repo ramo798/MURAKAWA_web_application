@@ -1,9 +1,9 @@
 version: '3'
 services:
-#  cgi:
-#    build: ./cgi/go
-#    ports:
-#      - "80:80"
+  cgi:
+    build: ./cgi/go
+    ports:
+      - "80:80"
 
   tomcat:
     image: tomcat:9.0.13-jre11-slim
