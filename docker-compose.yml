@@ -5,7 +5,7 @@ services:
     ports:
       - "80:80"
 
-  tomcat:
+  jsp:
     image: tomcat:9.0.13-jre11-slim
     volumes:
       - ./jsp:/usr/local/tomcat/webapps
