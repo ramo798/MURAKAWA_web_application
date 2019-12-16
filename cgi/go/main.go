@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 	"strings"
 
@@ -71,12 +72,17 @@ func receiver(w http.ResponseWriter, r *http.Request){
 
 func main() {
 	//ハンドラー
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprint(w, "Hello World")
+	})
+
 	//静的ファイル返す
 	http.Handle("/get/", http.StripPrefix("/get/", http.FileServer(http.Dir("./html/get/"))))
 	http.Handle("/post/", http.StripPrefix("/post/", http.FileServer(http.Dir("./html/post/"))))
+
 	//func receiverの処理させる
 	http.HandleFunc("/receive", receiver)
 
 	//8080でリスニング
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":80", nil)
 }
