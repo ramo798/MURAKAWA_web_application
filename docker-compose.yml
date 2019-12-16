@@ -10,4 +10,4 @@ services:
     volumes:
       - ./jsp:/usr/local/tomcat/webapps
     ports:
-      - 8080:8080
+      - "8080:8080"
