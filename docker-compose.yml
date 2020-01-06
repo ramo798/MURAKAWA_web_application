@@ -11,3 +11,8 @@ services:
       - ./jsp:/usr/local/tomcat/webapps
     ports:
       - "8080:8080"
+
+  cgi-python:
+    build: ./cgi/python
+    ports:
+      - "81:80"
