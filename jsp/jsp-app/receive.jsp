@@ -24,6 +24,6 @@
 	入力チェックボックス(聞かざる):<%=inputkikazaru %><br>
 	入力チェックボックス(喋らざる):<%=inputsyaberazaru %><br>
 	※全ての入力は文字列となっている<br>
-	<a href = "./index.html">入力ページに戻る</a>
+	<a href = "index.html">入力ページに戻る</a>
 </body>
 </html>

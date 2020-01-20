@@ -9,48 +9,50 @@
 <div class="center">
     <div class="main-wrapper">
         <div class="form-wrapper">
-            <div class="flex form-box">
-                <div class="flex-left nb">
-                    ID
-                </div>
-                <div class="flex-right nr">
-                    <input type="text" name="id" value="">
-                </div>
-            </div>
-            <div class="flex form-box">
-                <div class="flex-left nb">
-                    PASSWORD
-                </div>
-                <div class="flex-right nr">
-                    <input type="password" name="password" value="">
-                </div>
-            </div>
-            <div class="flex form-box">
-                <div class="flex-left nb">
-                    匿名ログイン
-                </div>
-                <div class="flex-right nr">
-                    <div class="radio flex">
-                        <input type="radio" name="radio" class="radio-input" id="radio-01">
-                        <label for="radio-01">使用</label><br>
-                        <input type="radio" name="radio" class="radio-input" id="radio-02">
-                        <label for="radio-02">不使用</label><br>
+            <form action="/receive" method="post">
+                <div class="flex form-box">
+                    <div class="flex-left nb">
+                        ID
+                    </div>
+                    <div class="flex-right nr">
+                        <input type="text" name="id" value="">
                     </div>
                 </div>
-            </div>
-            <div class="check-box">
-                <div class="flex jc form-box">
-                    <input type="checkbox" id="a_ch1"/>
-                    <label for="a_ch1">&#x1f648;</label>
-                    <input type="checkbox" id="a_ch2" />
-                    <label for="a_ch2">&#x1f649;</label>
-                    <input type="checkbox" id="a_ch3" />
-                    <label for="a_ch3">&#x1f64a;</label>
+                <div class="flex form-box">
+                    <div class="flex-left nb">
+                        PASSWORD
+                    </div>
+                    <div class="flex-right nr">
+                        <input type="password" name="password" value="">
+                    </div>
                 </div>
-            </div>
-            <div class="submit-box">
-                <input class="submit-bottom" type="submit" value="送信する">
-            </div>
+                <div class="flex form-box">
+                    <div class="flex-left nb">
+                        匿名ログイン
+                    </div>
+                    <div class="flex-right nr">
+                        <div class="radio flex">
+                            <input type="radio" name="anonymous" class="radio-input" id="radio-01" value="on">
+                            <label for="radio-01">使用</label><br>
+                            <input type="radio" name="anonymous" class="radio-input" id="radio-02" value="off">
+                            <label for="radio-02">不使用</label><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="check-box">
+                    <div class="flex jc form-box">
+                        <input type="checkbox" id="a_ch1" name="mizaru" value="1" />
+                        <label for="a_ch1">&#x1f648;</label>
+                        <input type="checkbox" id="a_ch2" name="kikazaru" value="1" />
+                        <label for="a_ch2">&#x1f649;</label>
+                        <input type="checkbox" id="a_ch3" name="syaberazaru" value="1" />
+                        <label for="a_ch3">&#x1f64a;</label>
+                    </div>
+                </div>
+                <div class="submit-box">
+                    <input class="submit-bottom" type="submit" value="送信する">
+                </div>
+            </form>
 
         </div>
     </div>
