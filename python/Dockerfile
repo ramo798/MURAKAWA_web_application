@@ -13,9 +13,9 @@ RUN apt-get -y install python3.7-dev
 # Python3.8
 RUN apt-get -y install python3.8
 
-
 # vim
 RUN apt-get -y install vim
+
 # Http settings
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
@@ -27,14 +27,10 @@ RUN mkdir -p $APACHE_RUN_DIR $APACHE_LOCK_DIR $APACHE_LOG_DIR
 
 RUN mkdir -p /production/www/cgi-bin
 RUN mkdir -p /production/www/lib
-
 #COPY cgi-bin /production/www/cgi-bin
 #COPY lib /production/www/lib
 COPY cgi-bin /usr/lib/cgi-bin
 COPY index.html /var/www/html/
-
-COPY cgi-bin /production/www/cgi-bin
-COPY lib /production/www/lib
 
 COPY apache2 /etc/apache2
 RUN ln -s /etc/apache2/mods-available/cgi.load /etc/apache2/mods-enabled/cgi.load
